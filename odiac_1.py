@@ -42,7 +42,7 @@ for k in range(0,1):
     lc = np.where(z > 20)
     z[lc] = 20
 
-#    # method 2: use the logarithmic scale, better to plot emissions globally/regionally
+#    # method 2: use the logarithmic scale, better to plot global/regional emissions
 #    z = np.log10(z) 
 
 ## plot emissions    
