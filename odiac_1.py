@@ -18,7 +18,10 @@ for k in range(0,1):
     print(filename)
     
     tem = tf.imread(filename)
-  
+    
+    # unit conversion
+    dat = tem*(10**6)/(12*30*24*3600)     # from tonne C km-2 month-1 to micromol CO2 m-2 s-1
+    
     # define lat and lon for ODIAC
     dx = dy = 0.008333333333333
     nrows = len(dat)
@@ -30,10 +33,7 @@ for k in range(0,1):
     lc_lat = np.where((lat >= t_lat - ext_lat) & (lat <= t_lat + ext_lat))
     lc_lon = np.where((lon >= t_lon - ext_lon) & (lon <= t_lon + ext_lon))
     x, y = np.meshgrid(lon[lc_lon],lat[lc_lat])
-    
-    # unit conversion
-    dat = tem*(10**6)/(12*30*24*3600)     # from tonne C km-2 month-1 to micromol CO2 m-2 s-1
-    
+       
     # extract data in the target area
     z = dat[np.transpose(lc_lat),lc_lon]
 
